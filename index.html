@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Arcos Arquitectónicos</title>
+    
+    <!-- 1. AQUÍ CARGAMOS LA LIBRERÍA LEAFLET (ESTILOS Y FUNCIONES) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <style>
-        /* Aquí le damos un poco de estilo a la página */
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; }
         header { background-color: #f4f4f4; padding: 20px; text-align: center; border-bottom: 2px solid #ddd; }
         nav { margin-top: 15px; }
         nav a { margin: 0 15px; text-decoration: none; color: #0056b3; font-weight: bold; font-size: 16px; }
         nav a:hover { text-decoration: underline; color: #003366; }
-        .contenedor { max-width: 800px; margin: 40px auto; padding: 0 20px; text-align: center; }
+        .contenedor { max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
         footer { background-color: #222; color: white; text-align: center; padding: 20px; margin-top: 50px; }
         .logo { max-width: 200px; }
+        
+        /* 2. ESTILOS PARA EL CONTENEDOR DEL MAPA */
+        #miMapa { 
+            height: 500px; /* Altura del mapa */
+            width: 100%;   /* Ancho del mapa */
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- CABECERA CON LOGO Y MENÚ -->
     <header>
-        <!-- Revisa que el nombre de tu logo siga siendo correcto aquí -->
+        <!-- Asegúrate de que el nombre del logo sea correcto -->
         <img src="logo.png" alt="Logo Arcos Arquitectónicos" class="logo">
         <nav>
             <a href="#inicio">Inicio</a>
@@ -29,30 +41,52 @@
         </nav>
     </header>
 
-    <!-- SECCIÓN DE INICIO -->
     <div class="contenedor" id="inicio">
         <h1>Construyendo el futuro de Guatemala</h1>
-        <p>Bienvenido a Arcos Arquitectónicos. Somos una empresa dedicada a diseñar y construir espacios funcionales, estéticos e innovadores para nuestros clientes.</p>
+        <p>Bienvenido a Arcos Arquitectónicos. Somos una empresa dedicada a diseñar y construir espacios funcionales, estéticos e innovadores.</p>
     </div>
 
-    <!-- SECCIÓN NOSOTROS -->
-    <div class="contenedor" id="nosotros">
-        <h2>Sobre Nosotros</h2>
-        <p>Con años de experiencia en el sector, nuestro equipo de profesionales se encarga de llevar tus ideas a la realidad, cuidando cada detalle desde la planificación hasta la ejecución final.</p>
-    </div>
-
-    <!-- SECCIÓN DEL FUTURO MAPA -->
+    <!-- SECCIÓN DEL MAPA -->
     <div class="contenedor" id="proyectos">
         <h2>Catálogo de Proyectos</h2>
-        <p><em>(Nota para nosotros: ¡Aquí es donde colocaremos el mapa interactivo de Guatemala más adelante!)</em></p>
+        <p>Explora nuestros proyectos a nivel nacional haciendo clic en los marcadores.</p>
+        
+        <!-- 3. ESTE ES EL CONTENEDOR DONDE SE DIBUJARÁ EL MAPA -->
+        <div id="miMapa"></div>
     </div>
 
-    <!-- PIE DE PÁGINA / CONTACTO -->
     <footer id="contacto">
         <h3>Contáctanos</h3>
         <p>Correo: info@arcosarquitectonicos.com | Teléfono: +502 1234-5678</p>
         <p>&copy; 2026 Arcos Arquitectónicos. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- 4. AQUÍ ESTÁ LA MAGIA (EL CÓDIGO JAVASCRIPT DEL MAPA) -->
+    <script>
+        // A. Inicializamos el mapa y lo centramos en Guatemala
+        // Las coordenadas son [Latitud, Longitud] y el '7' es el nivel de zoom inicial
+        var mapa = L.map('miMapa').setView([15.783471, -90.230759], 7);
+
+        // B. Cargamos el diseño del mapa (usamos OpenStreetMap, que es gratis)
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(mapa);
+
+        // C. ¡AGREGAMOS LOS MARCADORES DE TUS PROYECTOS!
+        
+        // Proyecto 1 (Ejemplo en la Ciudad de Guatemala)
+        var marcador1 = L.marker([14.634915, -90.506882]).addTo(mapa);
+        marcador1.bindPopup("<b>Proyecto Residencial Vista Hermosa</b><br>Ciudad de Guatemala, Guatemala.<br>Completado en 2024.");
+
+        // Proyecto 2 (Ejemplo en Quetzaltenango)
+        var marcador2 = L.marker([14.834722, -91.518333]).addTo(mapa);
+        marcador2.bindPopup("<b>Edificio Comercial Xela Central</b><br>Quetzaltenango.<br>Diseño y construcción.");
+        
+        // Proyecto 3 (Ejemplo en Petén)
+        var marcador3 = L.marker([16.912033, -89.895833]).addTo(mapa);
+        marcador3.bindPopup("<b>Complejo Turístico Flores</b><br>Flores, Petén.<br>Fase 1 completada.");
+
+    </script>
 </body>
 </html>
