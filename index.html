@@ -1,17 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mi Empresa</title>
+    <meta charset="UTF-8">
+    <title>Arcos Arquitectónicos</title>
+    <style>
+        /* Aquí le damos un poco de estilo a la página */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; }
+        header { background-color: #f4f4f4; padding: 20px; text-align: center; border-bottom: 2px solid #ddd; }
+        nav { margin-top: 15px; }
+        nav a { margin: 0 15px; text-decoration: none; color: #0056b3; font-weight: bold; font-size: 16px; }
+        nav a:hover { text-decoration: underline; color: #003366; }
+        .contenedor { max-width: 800px; margin: 40px auto; padding: 0 20px; text-align: center; }
+        footer { background-color: #222; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+        .logo { max-width: 200px; }
+    </style>
 </head>
-<meta charset="UTF-8">
-<body style="text-align: center; font-family: Arial, sans-serif; margin-top: 50px;">
+<body>
 
-    <h1>Bienvenido a Mi Empresa</h1>
-    
-    <!-- Aquí es donde aparecerá tu logo. Asegúrate de que el nombre coincida -->
-    <img src="logo.png" alt="Logo de mi empresa" width="250">
-    
-    <p>Próximamente: Nuestro catálogo de proyectos.</p>
+    <!-- CABECERA CON LOGO Y MENÚ -->
+    <header>
+        <!-- Revisa que el nombre de tu logo siga siendo correcto aquí -->
+        <img src="logo.png" alt="Logo Arcos Arquitectónicos" class="logo">
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- SECCIÓN DE INICIO -->
+    <div class="contenedor" id="inicio">
+        <h1>Construyendo el futuro de Guatemala</h1>
+        <p>Bienvenido a Arcos Arquitectónicos. Somos una empresa dedicada a diseñar y construir espacios funcionales, estéticos e innovadores para nuestros clientes.</p>
+    </div>
+
+    <!-- SECCIÓN NOSOTROS -->
+    <div class="contenedor" id="nosotros">
+        <h2>Sobre Nosotros</h2>
+        <p>Con años de experiencia en el sector, nuestro equipo de profesionales se encarga de llevar tus ideas a la realidad, cuidando cada detalle desde la planificación hasta la ejecución final.</p>
+    </div>
+
+    <!-- SECCIÓN DEL FUTURO MAPA -->
+    <div class="contenedor" id="proyectos">
+        <h2>Catálogo de Proyectos</h2>
+        <p><em>(Nota para nosotros: ¡Aquí es donde colocaremos el mapa interactivo de Guatemala más adelante!)</em></p>
+    </div>
+
+    <!-- PIE DE PÁGINA / CONTACTO -->
+    <footer id="contacto">
+        <h3>Contáctanos</h3>
+        <p>Correo: info@arcosarquitectonicos.com | Teléfono: +502 1234-5678</p>
+        <p>&copy; 2026 Arcos Arquitectónicos. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
