@@ -2,91 +2,177 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Arcos Arquitectónicos</title>
-    
-    <!-- 1. AQUÍ CARGAMOS LA LIBRERÍA LEAFLET (ESTILOS Y FUNCIONES) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcos Arquitectónicos - Catálogo</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; }
+        /* Estilos generales */
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }
         header { background-color: #f4f4f4; padding: 20px; text-align: center; border-bottom: 2px solid #ddd; }
-        nav { margin-top: 15px; }
-        nav a { margin: 0 15px; text-decoration: none; color: #0056b3; font-weight: bold; font-size: 16px; }
-        nav a:hover { text-decoration: underline; color: #003366; }
-        .contenedor { max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
-        footer { background-color: #222; color: white; text-align: center; padding: 20px; margin-top: 50px; }
         .logo { max-width: 200px; }
+        .contenedor { max-width: 900px; margin: 40px auto; padding: 20px; text-align: center; }
+
+        /* ESTILOS DEL MAPA DE IMAGEN */
+        .seccion-mapa-estatico { text-align: center; margin-bottom: 50px; }
+        .mapa-guatemala { max-width: 100%; height: auto; border: 2px solid #ccc; border-radius: 8px; }
+
+        /* ESTILOS DE LA LISTA DE PROYECTOS */
+        .departamento-container { margin-bottom: 40px; text-align: left; background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         
-        /* 2. ESTILOS PARA EL CONTENEDOR DEL MAPA */
-        #miMapa { 
-            height: 500px; /* Altura del mapa */
-            width: 100%;   /* Ancho del mapa */
-            border: 2px solid #ccc;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
+        /* Encabezado del Departamento */
+        .departamento-header { background-color: #004080; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .departamento-header h2 { margin: 0; font-size: 24px; font-weight: bold; }
+        .departamento-header .total-proyectos { font-size: 24px; font-weight: bold; }
+
+        /* Fila de un Proyecto */
+        .proyecto-fila { display: flex; border-bottom: 1px solid #ddd; align-items: flex-start; }
+        .proyecto-fila:last-child { border-bottom: none; }
+        
+        /* Info del Proyecto */
+        .proyecto-info { flex: 1; padding: 20px; }
+        .proyecto-municipio { background-color: #e6f2ff; color: #004080; padding: 5px 15px; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+        .proyecto-detalle-lista { list-style: none; padding: 0; margin: 0; font-size: 16px; line-height: 1.6; }
+        .proyecto-detalle-item { margin-bottom: 5px; }
+        .proyecto-detalle-item strong { color: #666; }
+
+        /* Foto del Proyecto */
+        .proyecto-foto-container { width: 250px; flex-shrink: 0; overflow: hidden; }
+        .proyecto-foto { width: 100%; height: auto; display: block; }
     </style>
 </head>
 <body>
 
-    <header>
-        <!-- Asegúrate de que el nombre del logo sea correcto -->
-        <img src="logo.png" alt="Logo Arcos Arquitectónicos" class="logo">
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-    </header>
+<header>
+    <img src="logo.jpg" alt="Logo Arcos Arquitectónicos" class="logo">
+</header>
 
-    <div class="contenedor" id="inicio">
-        <h1>Construyendo el futuro de Guatemala</h1>
-        <p>Bienvenido a Arcos Arquitectónicos. Somos una empresa dedicada a diseñar y construir espacios funcionales, estéticos e innovadores.</p>
+<div class="contenedor" id="proyectos">
+    <h1>Catálogo de Proyectos</h1>
+    <p>Haz clic sobre un departamento en el mapa para ver los proyectos realizados en esa zona.</p>
+    
+    <!-- A. SECCIÓN DEL MAPA ESTÁTICO CON ENLACES -->
+    <div class="seccion-mapa-estatico">
+        <img src="mapa-guatemala-limpio.png" alt="Mapa de Guatemala" usemap="#mapaguatemala" class="mapa-guatemala">
+        
+        <!-- DEFINICIÓN DE LAS ÁREAS CLICABLES -->
+        <map name="mapaguatemala">
+            <!-- NOTA: Las coordenadas reales las deberás ajustar luego con una herramienta web -->
+            <area shape="rect" coords="300,100,500,200" alt="Alta Verapaz" href="#alta-verapaz">
+            <area shape="rect" coords="600,150,800,300" alt="Izabal" href="#izabal">
+            <area shape="rect" coords="200,50,400,150" alt="Petén" href="#peten">
+            <area shape="rect" coords="100,250,250,350" alt="Quetzaltenango" href="#quetzaltenango">
+        </map>
     </div>
 
-    <!-- SECCIÓN DEL MAPA -->
-    <div class="contenedor" id="proyectos">
-        <h2>Catálogo de Proyectos</h2>
-        <p>Explora nuestros proyectos a nivel nacional haciendo clic en los marcadores.</p>
+    <!-- B. SECCIÓN DE LAS LISTAS DE PROYECTOS (DATOS DEL EXCEL) -->
+    
+    <!-- 1. Sección Alta Verapaz -->
+    <div id="alta-verapaz" class="departamento-container">
+        <div class="departamento-header">
+            <h2>Proyectos realizados en Alta Verapaz</h2>
+            <span class="total-proyectos">2</span>
+        </div>
         
-        <!-- 3. ESTE ES EL CONTENEDOR DONDE SE DIBUJARÁ EL MAPA -->
-        <div id="miMapa"></div>
-    </div>
+        <!-- Proyecto: Chisec -->
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Chisec</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Iglesia las Flores de San Juan</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 19 mts. x 20 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 15 de enero del 2026</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="chisec.jpg" alt="Iglesia las Flores de San Juan" class="proyecto-foto">
+            </div>
+        </div>
 
-    <footer id="contacto">
-        <h3>Contáctanos</h3>
-        <p>Correo: info@arcosarquitectonicos.com | Teléfono: +502 1234-5678</p>
-        <p>&copy; 2026 Arcos Arquitectónicos. Todos los derechos reservados.</p>
-    </footer>
+        <!-- Proyecto: Cobán -->
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Cobán</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Bodega la bendición</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 20 mts. x 15 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 20 de febrero del 2026</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="coban.jpg" alt="Bodega la bendición" class="proyecto-foto">
+            </div>
+        </div>
+    </div> <!-- Fin Alta Verapaz -->
 
-    <!-- 4. AQUÍ ESTÁ LA MAGIA (EL CÓDIGO JAVASCRIPT DEL MAPA) -->
-    <script>
-        // A. Inicializamos el mapa y lo centramos en Guatemala
-        // Las coordenadas son [Latitud, Longitud] y el '7' es el nivel de zoom inicial
-        var mapa = L.map('miMapa').setView([15.783471, -90.230759], 7);
-
-        // B. Cargamos el diseño del mapa (usamos OpenStreetMap, que es gratis)
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(mapa);
-
-        // C. ¡AGREGAMOS LOS MARCADORES DE TUS PROYECTOS!
+    <!-- 2. Sección Izabal -->
+    <div id="izabal" class="departamento-container">
+        <div class="departamento-header">
+            <h2>Proyectos realizados en Izabal</h2>
+            <span class="total-proyectos">1</span>
+        </div>
         
-        // Proyecto 1 (Ejemplo en la Ciudad de Guatemala)
-        var marcador1 = L.marker([14.634915, -90.506882]).addTo(mapa);
-        marcador1.bindPopup("<b>Proyecto Residencial Vista Hermosa</b><br>Ciudad de Guatemala, Guatemala.<br>Completado en 2024.");
+        <!-- Proyecto: Puerto Barrios -->
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Puerto Barrios</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Nave Industrial Marítima</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 50 mts. x 80 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 10 de marzo del 2026</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="izabal.jpg" alt="Nave Industrial Marítima" class="proyecto-foto">
+            </div>
+        </div>
+    </div> <!-- Fin Izabal -->
 
-        // Proyecto 2 (Ejemplo en Quetzaltenango)
-        var marcador2 = L.marker([14.834722, -91.518333]).addTo(mapa);
-        marcador2.bindPopup("<b>Edificio Comercial Xela Central</b><br>Quetzaltenango.<br>Diseño y construcción.");
+    <!-- 3. Sección Petén -->
+    <div id="peten" class="departamento-container">
+        <div class="departamento-header">
+            <h2>Proyectos realizados en Petén</h2>
+            <span class="total-proyectos">1</span>
+        </div>
         
-        // Proyecto 3 (Ejemplo en Petén)
-        var marcador3 = L.marker([16.912033, -89.895833]).addTo(mapa);
-        marcador3.bindPopup("<b>Complejo Turístico Flores</b><br>Flores, Petén.<br>Fase 1 completada.");
+        <!-- Proyecto: Flores -->
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Flores</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Complejo Turístico El Mirador</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 120 mts. x 60 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 05 de mayo del 2025</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="flores.jpg" alt="Complejo Turístico El Mirador" class="proyecto-foto">
+            </div>
+        </div>
+    </div> <!-- Fin Petén -->
 
-    </script>
+    <!-- 4. Sección Quetzaltenango -->
+    <div id="quetzaltenango" class="departamento-container">
+        <div class="departamento-header">
+            <h2>Proyectos realizados en Quetzaltenango</h2>
+            <span class="total-proyectos">1</span>
+        </div>
+        
+        <!-- Proyecto: Quetzaltenango -->
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Quetzaltenango</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Techo Curvo Polideportivo</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 35 mts. x 45 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 12 de noviembre del 2025</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="xela.jpg" alt="Techo Curvo Polideportivo" class="proyecto-foto">
+            </div>
+        </div>
+    </div> <!-- Fin Quetzaltenango -->
+
+</div>
+
 </body>
 </html>
