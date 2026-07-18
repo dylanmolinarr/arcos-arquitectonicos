@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcos Arquitectónicos - Proyectos</title>
+    <link rel="icon" type="image/png" href="logo_sin.png">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; background-color: #f9f9f9; }
+        header { background-color: #f4f4f4; padding: 20px; text-align: center; border-bottom: 2px solid #ddd; }
+        .logo { max-width: 200px; }
+        .contenedor { max-width: 900px; margin: 40px auto; padding: 20px; }
+        
+        .departamento-container { margin-bottom: 40px; text-align: left; background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .departamento-header { background-color: #004080; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .departamento-header h2 { margin: 0; font-size: 24px; font-weight: bold; }
+        .departamento-header .total-proyectos { font-size: 24px; font-weight: bold; }
+        .proyecto-fila { display: flex; border-bottom: 1px solid #ddd; align-items: flex-start; }
+        .proyecto-fila:last-child { border-bottom: none; }
+        .proyecto-info { flex: 1; padding: 20px; }
+        .proyecto-municipio { background-color: #e6f2ff; color: #004080; padding: 5px 15px; border-radius: 5px; display: inline-block; font-weight: bold; font-size: 18px; margin-bottom: 10px; }
+        .proyecto-detalle-lista { list-style: none; padding: 0; margin: 0; font-size: 16px; line-height: 1.6; }
+        .proyecto-detalle-item { margin-bottom: 5px; }
+        .proyecto-detalle-item strong { color: #666; }
+        .proyecto-foto-container { width: 250px; flex-shrink: 0; overflow: hidden; }
+        .proyecto-foto { width: 100%; height: auto; display: block; }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo_sin.jpg" alt="Logo Arcos Arquitectónicos" class="logo">
+</header>
+
+<div class="contenedor" id="proyectos">
+    
+    <!-- 1. Alta Verapaz -->
+    <div id="alta-verapaz" class="departamento-container">
+        <div class="departamento-header">
+            <h2>Proyectos realizados en Alta Verapaz</h2>
+            <span class="total-proyectos">2</span>
+        </div>
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Chisec</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Iglesia las Flores de San Juan</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 19 mts. x 20 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 15 de enero del 2026</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="chisec.jpg" alt="Iglesia las Flores de San Juan" class="proyecto-foto">
+            </div>
+        </div>
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Cobán</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Bodega la bendición</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 20 mts. x 15 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 20 de febrero del 2026</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="coban.jpg" alt="Bodega la bendición" class="proyecto-foto">
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Izabal -->
+    <div id="izabal" class="departamento-container">
+        <div class="departamento-header">
+            <h2>Proyectos realizados en Izabal</h2>
+            <span class="total-proyectos">1</span>
+        </div>
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Puerto Barrios</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Nave Industrial Marítima</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 50 mts. x 80 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 10 de marzo del 2026</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="izabal.jpg" alt="Nave Industrial Marítima" class="proyecto-foto">
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Petén -->
+    <div id="peten" class="departamento-container">
+        <div class="departamento-header">
+            <h2>Proyectos realizados en Petén</h2>
+            <span class="total-proyectos">1</span>
+        </div>
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Flores</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Complejo Turístico El Mirador</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 120 mts. x 60 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 05 de mayo del 2025</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="flores.jpg" alt="Complejo Turístico El Mirador" class="proyecto-foto">
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Quetzaltenango -->
+    <div id="quetzaltenango" class="departamento-container">
+        <div class="departamento-header">
+            <h2>Proyectos realizados en Quetzaltenango</h2>
+            <span class="total-proyectos">1</span>
+        </div>
+        <div class="proyecto-fila">
+            <div class="proyecto-info">
+                <div class="proyecto-municipio">Quetzaltenango</div>
+                <ul class="proyecto-detalle-lista">
+                    <li class="proyecto-detalle-item"><strong>Nombre del Proyecto:</strong> Techo Curvo Polideportivo</li>
+                    <li class="proyecto-detalle-item"><strong>Tamaño y Dimensiones:</strong> 35 mts. x 45 mts.</li>
+                    <li class="proyecto-detalle-item"><strong>Fecha de Fabricación:</strong> 12 de noviembre del 2025</li>
+                </ul>
+            </div>
+            <div class="proyecto-foto-container">
+                <img src="xela.jpg" alt="Techo Curvo Polideportivo" class="proyecto-foto">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
